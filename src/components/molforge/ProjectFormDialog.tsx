@@ -34,10 +34,10 @@ export function ProjectFormDialog({ trigger, project }: { trigger: ReactNode; pr
     assay_type: project?.assay_type ?? "",
     objectives: (project?.optimization_objectives ?? []).join(", "),
     tools: (project?.preferred_tools ?? []).join(", "),
-    mw_max: hc.mw_max?.toString() ?? "",
-    clogp_max: hc.clogp_max?.toString() ?? "",
-    tpsa_max: hc.tpsa_max?.toString() ?? "",
-    hbd_max: hc.hbd_max?.toString() ?? "",
+    mw_max: hc['mw_max']?.toString() ?? "",
+    clogp_max: hc['clogp_max']?.toString() ?? "",
+    tpsa_max: hc['tpsa_max']?.toString() ?? "",
+    hbd_max: hc['hbd_max']?.toString() ?? "",
   });
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setF({ ...f, [k]: e.target.value });
 
