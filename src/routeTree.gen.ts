@@ -10,33 +10,205 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedAdmetRouteImport } from './routes/_authenticated/admet'
+import { Route as AuthenticatedAnalysisRouteImport } from './routes/_authenticated/analysis'
+import { Route as AuthenticatedCompoundsRouteImport } from './routes/_authenticated/compounds'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedDockingRouteImport } from './routes/_authenticated/docking'
+import { Route as AuthenticatedGenerativeRouteImport } from './routes/_authenticated/generative'
+import { Route as AuthenticatedLeadOptimizationRouteImport } from './routes/_authenticated/lead-optimization'
+import { Route as AuthenticatedPropertiesRouteImport } from './routes/_authenticated/properties'
+import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
+import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
+import { Route as AuthenticatedProjectsIndexRouteImport } from './routes/_authenticated/projects.index'
+import { Route as AuthenticatedProjectsProjectIdRouteImport } from './routes/_authenticated/projects.$projectId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdmetRoute = AuthenticatedAdmetRouteImport.update({
+  id: '/admet',
+  path: '/admet',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAnalysisRoute = AuthenticatedAnalysisRouteImport.update({
+  id: '/analysis',
+  path: '/analysis',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCompoundsRoute = AuthenticatedCompoundsRouteImport.update({
+  id: '/compounds',
+  path: '/compounds',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDockingRoute = AuthenticatedDockingRouteImport.update({
+  id: '/docking',
+  path: '/docking',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedGenerativeRoute = AuthenticatedGenerativeRouteImport.update({
+  id: '/generative',
+  path: '/generative',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedLeadOptimizationRoute =
+  AuthenticatedLeadOptimizationRouteImport.update({
+    id: '/lead-optimization',
+    path: '/lead-optimization',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedPropertiesRoute = AuthenticatedPropertiesRouteImport.update({
+  id: '/properties',
+  path: '/properties',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSettingsRoute = AuthenticatedSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProjectsIndexRoute =
+  AuthenticatedProjectsIndexRouteImport.update({
+    id: '/projects/',
+    path: '/projects/',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedProjectsProjectIdRoute =
+  AuthenticatedProjectsProjectIdRouteImport.update({
+    id: '/projects/$projectId',
+    path: '/projects/$projectId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/admet': typeof AuthenticatedAdmetRoute
+  '/analysis': typeof AuthenticatedAnalysisRoute
+  '/compounds': typeof AuthenticatedCompoundsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/docking': typeof AuthenticatedDockingRoute
+  '/generative': typeof AuthenticatedGenerativeRoute
+  '/lead-optimization': typeof AuthenticatedLeadOptimizationRoute
+  '/properties': typeof AuthenticatedPropertiesRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/admet': typeof AuthenticatedAdmetRoute
+  '/analysis': typeof AuthenticatedAnalysisRoute
+  '/compounds': typeof AuthenticatedCompoundsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/docking': typeof AuthenticatedDockingRoute
+  '/generative': typeof AuthenticatedGenerativeRoute
+  '/lead-optimization': typeof AuthenticatedLeadOptimizationRoute
+  '/properties': typeof AuthenticatedPropertiesRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/settings': typeof AuthenticatedSettingsRoute
+  '/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/projects': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/_authenticated/admet': typeof AuthenticatedAdmetRoute
+  '/_authenticated/analysis': typeof AuthenticatedAnalysisRoute
+  '/_authenticated/compounds': typeof AuthenticatedCompoundsRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/docking': typeof AuthenticatedDockingRoute
+  '/_authenticated/generative': typeof AuthenticatedGenerativeRoute
+  '/_authenticated/lead-optimization': typeof AuthenticatedLeadOptimizationRoute
+  '/_authenticated/properties': typeof AuthenticatedPropertiesRoute
+  '/_authenticated/reports': typeof AuthenticatedReportsRoute
+  '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/_authenticated/projects/$projectId': typeof AuthenticatedProjectsProjectIdRoute
+  '/_authenticated/projects/': typeof AuthenticatedProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/admet'
+    | '/analysis'
+    | '/compounds'
+    | '/dashboard'
+    | '/docking'
+    | '/generative'
+    | '/lead-optimization'
+    | '/properties'
+    | '/reports'
+    | '/settings'
+    | '/projects/$projectId'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/admet'
+    | '/analysis'
+    | '/compounds'
+    | '/dashboard'
+    | '/docking'
+    | '/generative'
+    | '/lead-optimization'
+    | '/properties'
+    | '/reports'
+    | '/settings'
+    | '/projects/$projectId'
+    | '/projects'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/_authenticated/admet'
+    | '/_authenticated/analysis'
+    | '/_authenticated/compounds'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/docking'
+    | '/_authenticated/generative'
+    | '/_authenticated/lead-optimization'
+    | '/_authenticated/properties'
+    | '/_authenticated/reports'
+    | '/_authenticated/settings'
+    | '/_authenticated/projects/$projectId'
+    | '/_authenticated/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +220,144 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admet': {
+      id: '/_authenticated/admet'
+      path: '/admet'
+      fullPath: '/admet'
+      preLoaderRoute: typeof AuthenticatedAdmetRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/analysis': {
+      id: '/_authenticated/analysis'
+      path: '/analysis'
+      fullPath: '/analysis'
+      preLoaderRoute: typeof AuthenticatedAnalysisRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/compounds': {
+      id: '/_authenticated/compounds'
+      path: '/compounds'
+      fullPath: '/compounds'
+      preLoaderRoute: typeof AuthenticatedCompoundsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/docking': {
+      id: '/_authenticated/docking'
+      path: '/docking'
+      fullPath: '/docking'
+      preLoaderRoute: typeof AuthenticatedDockingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/generative': {
+      id: '/_authenticated/generative'
+      path: '/generative'
+      fullPath: '/generative'
+      preLoaderRoute: typeof AuthenticatedGenerativeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/lead-optimization': {
+      id: '/_authenticated/lead-optimization'
+      path: '/lead-optimization'
+      fullPath: '/lead-optimization'
+      preLoaderRoute: typeof AuthenticatedLeadOptimizationRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/properties': {
+      id: '/_authenticated/properties'
+      path: '/properties'
+      fullPath: '/properties'
+      preLoaderRoute: typeof AuthenticatedPropertiesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reports': {
+      id: '/_authenticated/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AuthenticatedReportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/settings': {
+      id: '/_authenticated/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AuthenticatedSettingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/projects/': {
+      id: '/_authenticated/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof AuthenticatedProjectsIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/projects/$projectId': {
+      id: '/_authenticated/projects/$projectId'
+      path: '/projects/$projectId'
+      fullPath: '/projects/$projectId'
+      preLoaderRoute: typeof AuthenticatedProjectsProjectIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdmetRoute: typeof AuthenticatedAdmetRoute
+  AuthenticatedAnalysisRoute: typeof AuthenticatedAnalysisRoute
+  AuthenticatedCompoundsRoute: typeof AuthenticatedCompoundsRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDockingRoute: typeof AuthenticatedDockingRoute
+  AuthenticatedGenerativeRoute: typeof AuthenticatedGenerativeRoute
+  AuthenticatedLeadOptimizationRoute: typeof AuthenticatedLeadOptimizationRoute
+  AuthenticatedPropertiesRoute: typeof AuthenticatedPropertiesRoute
+  AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
+  AuthenticatedSettingsRoute: typeof AuthenticatedSettingsRoute
+  AuthenticatedProjectsProjectIdRoute: typeof AuthenticatedProjectsProjectIdRoute
+  AuthenticatedProjectsIndexRoute: typeof AuthenticatedProjectsIndexRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdmetRoute: AuthenticatedAdmetRoute,
+  AuthenticatedAnalysisRoute: AuthenticatedAnalysisRoute,
+  AuthenticatedCompoundsRoute: AuthenticatedCompoundsRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDockingRoute: AuthenticatedDockingRoute,
+  AuthenticatedGenerativeRoute: AuthenticatedGenerativeRoute,
+  AuthenticatedLeadOptimizationRoute: AuthenticatedLeadOptimizationRoute,
+  AuthenticatedPropertiesRoute: AuthenticatedPropertiesRoute,
+  AuthenticatedReportsRoute: AuthenticatedReportsRoute,
+  AuthenticatedSettingsRoute: AuthenticatedSettingsRoute,
+  AuthenticatedProjectsProjectIdRoute: AuthenticatedProjectsProjectIdRoute,
+  AuthenticatedProjectsIndexRoute: AuthenticatedProjectsIndexRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
