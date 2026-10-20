@@ -5,7 +5,7 @@ describe("parsers", () => {
   it("CSV requires a SMILES column", () => {
     const r = parseCsv("name,structure\nA,CCO\n");
     expect(r.records).toHaveLength(0);
-    expect(r.errors[0].message).toMatch(/SMILES/);
+    expect(r.errors[0]!.message).toMatch(/SMILES/);
   });
   it("CSV keeps names and reports empty SMILES cells instead of dropping them", () => {
     const r = parseCsv('Name,SMILES\n"aspirin, form A",CC(=O)Oc1ccccc1C(=O)O\nempty,\n');
@@ -20,7 +20,7 @@ describe("parsers", () => {
     const mb = "mol1\n  x\n\n  0  0  0  0  0  0  0  0  0  0999 V2000\nM  END\n> <p>\n1\n\n$$$$\nbad\nno end\n$$$$\n";
     const r = parseSdf(mb);
     expect(r.records).toHaveLength(1);
-    expect(r.records[0].name).toBe("mol1");
+    expect(r.records[0]!.name).toBe("mol1");
     expect(r.errors).toHaveLength(1);
   });
   it("CSV export escapes", () => {

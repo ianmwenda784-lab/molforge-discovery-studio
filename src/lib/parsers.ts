@@ -2,7 +2,7 @@ export type ParsedRecord = {
   input: string;
   format: "smiles" | "molblock";
   name: string | null;
-  tags?: string[];
+  tags?: string[] | undefined;
   line: number;
 };
 export type ParseResult = { records: ParsedRecord[]; errors: { line: number; message: string }[] };

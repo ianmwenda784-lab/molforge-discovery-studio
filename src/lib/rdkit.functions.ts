@@ -30,7 +30,7 @@ const healthSchema = z.object({
 export type RdkitStatus =
   | { state: "not_configured" }
   | { state: "unreachable"; error: string }
-  | { state: "ok"; rdkitVersion: string; serviceVersion?: string };
+  | { state: "ok"; rdkitVersion: string; serviceVersion?: string | undefined };
 
 async function checkHealth(): Promise<RdkitStatus> {
   const { url, token } = getConfig();
@@ -253,7 +253,7 @@ export const importCompounds = createServerFn({ method: "POST" })
     let invalid = 0;
     let duplicates = 0;
     svc.results.forEach((r, i) => {
-      const rec = data.records[i];
+      const rec = data.records[i]!;
       const line = rec.line ?? i + 1;
       const base = { line, name: rec.name ?? null, input: rec.input };
       if (!r.valid || !r.canonical_smiles || !r.descriptors) {
@@ -332,8 +332,8 @@ export const recalculatePending = createServerFn({ method: "POST" })
     const taken = new Set((ex ?? []).map((e) => e.canonical_smiles!));
     let calculated = 0, invalid = 0, duplicates = 0;
     for (let i = 0; i < pending.length; i++) {
-      const p = pending[i];
-      const r = svc.results[i];
+      const p = pending[i]!;
+      const r = svc.results[i]!;
       if (!r.valid || !r.canonical_smiles || !r.descriptors) {
         invalid++;
         await supabase.from("compounds").update({ calculation_status: "invalid", calculation_error: r.error ?? "RDKit could not parse/sanitize this structure.", calculation_engine: `RDKit ${svc.version}` }).eq("id", p.id);
