@@ -15,7 +15,7 @@ export function parseSmilesLines(text: string): ParseResult {
     if (!line || line.startsWith("#")) return;
     const m = line.match(/^(\S+)(?:\s+(.+))?$/);
     if (!m) return;
-    records.push({ input: m[1], format: "smiles", name: m[2]?.trim() || null, line: i + 1 });
+    records.push({ input: m[1]!, format: "smiles", name: m[2]?.trim() || null, line: i + 1 });
   });
   return { records, errors: [] };
 }
@@ -46,9 +46,9 @@ export function parseCsvRows(text: string): string[][] {
 export function parseCsv(text: string): ParseResult {
   const rows = parseCsvRows(text.replace(/^\uFEFF/, ""));
   if (!rows.length) return { records: [], errors: [{ line: 1, message: "File is empty." }] };
-  const header = rows[0].map((h) => h.trim().toLowerCase());
+  const header = rows[0]!.map((h) => h.trim().toLowerCase());
   const si = header.findIndex((h) => h === "smiles" || h === "canonical_smiles" || h === "smi");
-  if (si < 0) return { records: [], errors: [{ line: 1, message: `Required "SMILES" column not found. Columns: ${rows[0].join(", ")}` }] };
+  if (si < 0) return { records: [], errors: [{ line: 1, message: `Required "SMILES" column not found. Columns: ${rows[0]!.join(", ")}` }] };
   const ni = header.findIndex((h) => ["name", "id", "compound_id", "compound", "title"].includes(h));
   const ti = header.findIndex((h) => h === "tags");
   const records: ParsedRecord[] = [];
