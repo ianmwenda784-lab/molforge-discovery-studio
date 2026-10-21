@@ -6,7 +6,7 @@ import { AlertTriangle, CheckCircle2, PlugZap, type LucideIcon } from "lucide-re
 import { getRdkitStatus } from "@/lib/rdkit.functions";
 import { cn } from "@/lib/utils";
 
-export function PageHeader({ title, subtitle, actions }: { title: string; subtitle?: string; actions?: ReactNode }) {
+export function PageHeader({ title, subtitle, actions }: { title: string; subtitle?: string | undefined; actions?: ReactNode }) {
   return (
     <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
       <div>
