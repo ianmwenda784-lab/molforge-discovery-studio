@@ -1,0 +1,14 @@
+# Render blueprint — one-click deploy for the MolForge RDKit service.
+# In Render: New → Blueprint → connect this repo → Render reads this file
+# and provisions the service with the settings below.
+services:
+  - type: web
+    name: molforge-rdkit
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    rootDir: rdkit-service
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: SERVICE_TOKEN
+        generateValue: true # Render generates a strong random token; copy it for MolForge's RDKIT_SERVICE_TOKEN secret
